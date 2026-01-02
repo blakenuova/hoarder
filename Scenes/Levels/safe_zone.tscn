@@ -53,7 +53,7 @@ size = Vector3(50, 10, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cs7a"]
 transparency = 1
-albedo_color = Color(0.6627451, 1, 1, 0.5529412)
+albedo_color = Color(0.6627451, 1, 1, 0.15294118)
 metallic = 1.0
 metallic_specular = 1.0
 roughness = 0.6
@@ -114,9 +114,9 @@ use_collision = true
 mesh = SubResource("BoxMesh_olhn8")
 
 [node name="subtraction" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.188362, -25.039534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027862549, 5.188362, -25.039534)
 operation = 2
-size = Vector3(41.200195, 8, 1)
+size = Vector3(42.041687, 8, 1)
 
 [node name="Glass" type="CSGMesh3D" parent="Environment_Mesh/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2, -25)
