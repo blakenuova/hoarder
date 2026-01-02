@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dd38vdatc2hvx"
+path="res://.godot/imported/Supernatural - Bloodlust Theme by Jay Gruska. (ExtendedNo rock ending).mp3-76100659f7d80b4d54af1f52761646af.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Supernatural - Bloodlust Theme by Jay Gruska. (ExtendedNo rock ending).mp3"
+dest_files=["res://.godot/imported/Supernatural - Bloodlust Theme by Jay Gruska. (ExtendedNo rock ending).mp3-76100659f7d80b4d54af1f52761646af.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

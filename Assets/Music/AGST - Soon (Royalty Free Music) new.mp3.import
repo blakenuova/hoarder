@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://duxm6iykylnkg"
+path="res://.godot/imported/AGST - Soon (Royalty Free Music) new.mp3-8aee53088b716081f97076bf21d11667.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/AGST - Soon (Royalty Free Music) new.mp3"
+dest_files=["res://.godot/imported/AGST - Soon (Royalty Free Music) new.mp3-8aee53088b716081f97076bf21d11667.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
