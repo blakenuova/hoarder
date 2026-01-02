@@ -1,3 +1,131 @@
-[gd_scene format=3 uid="uid://yt416ssqoqfs"]
+[gd_scene load_steps=18 format=3 uid="uid://yt416ssqoqfs"]
+
+[ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
+[ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
+[ext_resource type="Texture2D" uid="uid://cypb58cjds4qs" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_01.png" id="3_hg7jh"]
+[ext_resource type="Texture2D" uid="uid://dqfcxaw5wq6hj" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_08.png" id="3_kptrm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
+panorama = ExtResource("1_eihp4")
+
+[sub_resource type="Sky" id="Sky_hg7jh"]
+sky_material = SubResource("PanoramaSkyMaterial_erxk3")
+
+[sub_resource type="Environment" id="Environment_kptrm"]
+background_mode = 2
+sky = SubResource("Sky_hg7jh")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eihp4"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 29.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_erxk3"]
+material = SubResource("StandardMaterial3D_eihp4")
+radius = 80.5
+height = 150.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hg7jh"]
+albedo_texture = ExtResource("2_erxk3")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_kptrm"]
+material = SubResource("StandardMaterial3D_hg7jh")
+size = Vector3(200, 0.1, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olhn8"]
+albedo_texture = ExtResource("3_kptrm")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_2cs7a"]
+material = SubResource("StandardMaterial3D_olhn8")
+size = Vector3(50, 0.1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kptrm"]
+albedo_texture = ExtResource("3_hg7jh")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_olhn8"]
+material = SubResource("StandardMaterial3D_kptrm")
+size = Vector3(50, 10, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cs7a"]
+transparency = 1
+albedo_color = Color(0.6627451, 1, 1, 0.5529412)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_wsbbe"]
+material = SubResource("StandardMaterial3D_2cs7a")
+size = Vector3(42, 8, 0.1)
 
 [node name="Safe_zone" type="Node3D"]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.9977069, 0.06043378, -0.0304768, 0.050576087, 0.9649086, 0.25766966, 0.044979297, 0.25553754, -0.9657525, 0, 61, 0)
+light_color = Color(0.7009877, 0.80382687, 0.8863666, 1)
+light_energy = 0.09
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_kptrm")
+
+[node name="Moon" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 610.8998, -756)
+mesh = SubResource("SphereMesh_erxk3")
+
+[node name="Environment_Mesh" type="Node3D" parent="."]
+
+[node name="floor" type="CSGMesh3D" parent="Environment_Mesh"]
+use_collision = true
+mesh = SubResource("BoxMesh_kptrm")
+
+[node name="floor2" type="CSGMesh3D" parent="Environment_Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_2cs7a")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Environment_Mesh"]
+use_collision = true
+
+[node name="Wall" type="CSGMesh3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -25)
+use_collision = true
+mesh = SubResource("BoxMesh_olhn8")
+
+[node name="Wall2" type="CSGMesh3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 25)
+use_collision = true
+mesh = SubResource("BoxMesh_olhn8")
+
+[node name="Wall3" type="CSGMesh3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 25, 5, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_olhn8")
+
+[node name="Wall4" type="CSGMesh3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -25, 5, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_olhn8")
+
+[node name="subtraction" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.188362, -25.039534)
+operation = 2
+size = Vector3(41.200195, 8, 1)
+
+[node name="Glass" type="CSGMesh3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2, -25)
+use_collision = true
+mesh = SubResource("BoxMesh_wsbbe")
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.7, 0)
+light_energy = 5.0
+omni_range = 36.736015
