@@ -34,6 +34,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var inventory: Inventory = $Inventory
+@onready var inventory_ui: Control = $CanvasLayer/InventoryUI
 
 
 # --------------- audio node ---------------
@@ -60,6 +61,10 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# Initialize shapes: Ensure only standing is active at start
 	update_collision_shapes(State.STAND)
+	
+	# --- CONNECT SIGNALS ---
+	# When inventory changes, tell UI to update
+	inventory.inventory_updated.connect(inventory_ui.update_grid)
 
 func _input(event):
 	# Camera Look Logic
@@ -71,6 +76,17 @@ func _input(event):
 	# Menu/Unlock Mouse
 	if event.is_action_pressed("menu"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
+	
+	# Toggle Inventory
+	if event.is_action_pressed("inventory"): # Make sure "inventory" is in your Input Map (e.g. Tab or I)
+		inventory_ui.visible = !inventory_ui.visible
+		
+		# Unlock mouse when inventory is open
+		if inventory_ui.visible:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

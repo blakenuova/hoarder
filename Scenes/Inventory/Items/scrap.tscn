@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://s1wgwcxpxije"]
+
+[ext_resource type="Script" uid="uid://wqyyyjffuct6" path="res://Scripts/Interactable/pickup.gd" id="1_ut18j"]
+[ext_resource type="Resource" uid="uid://b38ajn1y8vkr0" path="res://Resources/Items/scrap.tres" id="2_5q300"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ua5wo"]
+size = Vector3(0.94140625, 0.10949707, 0.7529297)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ut18j"]
+
+[node name="Scrap" type="RigidBody3D"]
+script = ExtResource("1_ut18j")
+item_data = ExtResource("2_5q300")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036193848, 0)
+shape = SubResource("BoxShape3D_ua5wo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.92, 0, 0, 0, 0.032, 0, 0, 0, 0.431, 0, 0, 0)
+mesh = SubResource("BoxMesh_ut18j")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6807631, 0, 0.28991258, 0, 0.031999998, 0, -0.6188389, 0, 0.3189227, 0, 0.044230223, 0)
+mesh = SubResource("BoxMesh_ut18j")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.61819905, 0, -0.07455227, 0, 0.031999998, 0, 0.102940895, 0, 0.44771472, 0, 0.071742296, 0)
+mesh = SubResource("BoxMesh_ut18j")

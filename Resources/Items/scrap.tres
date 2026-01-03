@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b38ajn1y8vkr0"]
+
+[ext_resource type="Texture2D" uid="uid://bd3su07argvt2" path="res://Assets/2D Assets/Resource Icons/scrap_metal.png" id="1_4d087"]
+[ext_resource type="Script" uid="uid://d2b8ulgugbiy6" path="res://Scenes/Inventory/item_data.gd" id="1_ufduv"]
+
+[resource]
+script = ExtResource("1_ufduv")
+name = "Scrap"
+description = "Pile of Junk"
+stackable = true
+icon = ExtResource("1_4d087")
+metadata/_custom_type_script = "uid://d2b8ulgugbiy6"

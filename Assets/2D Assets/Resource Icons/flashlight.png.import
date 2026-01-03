@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eahskehyw3cy"
-path="res://.godot/imported/rusty_key.png-26dbdf4dd303faf65e0efb407ca92233.ctex"
+uid="uid://cv3xp3lpwxe3l"
+path="res://.godot/imported/flashlight.png-e11bbb146c2017a92afbdd242ac9d6ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Resource Icons/rusty_key.png"
-dest_files=["res://.godot/imported/rusty_key.png-26dbdf4dd303faf65e0efb407ca92233.ctex"]
+source_file="res://Assets/2D Assets/Resource Icons/flashlight.png"
+dest_files=["res://.godot/imported/flashlight.png-e11bbb146c2017a92afbdd242ac9d6ed.ctex"]
 
 [params]
 

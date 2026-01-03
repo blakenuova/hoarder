@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv3xp3lpwxe3l"
-path="res://.godot/imported/flashlight.png-703de937f9ca2fd446454a4979ae3144.ctex"
+uid="uid://dujjdt3ruvicb"
+path="res://.godot/imported/screw_nut.png-c6b0fe53a2ec93dc93b033d6dade8bd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Resource Icons/flashlight.png"
-dest_files=["res://.godot/imported/flashlight.png-703de937f9ca2fd446454a4979ae3144.ctex"]
+source_file="res://Assets/2D Assets/Resource Icons/screw_nut.png"
+dest_files=["res://.godot/imported/screw_nut.png-c6b0fe53a2ec93dc93b033d6dade8bd3.ctex"]
 
 [params]
 

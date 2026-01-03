@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://yt416ssqoqfs"]
+[gd_scene load_steps=25 format=3 uid="uid://yt416ssqoqfs"]
 
 [ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
 [ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c272rm5bpkjaa" path="res://Scripts/Interactable/Interactable.gd" id="6_2cs7a"]
 [ext_resource type="PackedScene" uid="uid://couv4onmpyk7p" path="res://Scenes/Interactables/light_switch.tscn" id="6_eq3jn"]
 [ext_resource type="PackedScene" uid="uid://pa7qbuhfjv2p" path="res://Scenes/Inventory/Items/flashlight.tscn" id="9_r6koe"]
+[ext_resource type="PackedScene" uid="uid://s1wgwcxpxije" path="res://Scenes/Inventory/Items/scrap.tscn" id="10_lesm6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
 panorama = ExtResource("1_eihp4")
@@ -190,3 +191,39 @@ shape = SubResource("BoxShape3D_r6koe")
 
 [node name="Flashlight" parent="Test" instance=ExtResource("9_r6koe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0636086, 1.3158844, 0)
+
+[node name="Scrap" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.04581, 0.7565228, 0)
+
+[node name="Scrap2" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.04581, 0.7565228, -1.1359916)
+
+[node name="Scrap3" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.04581, 0.7565228, -2.039886)
+
+[node name="Scrap4" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.053772, 0.7565228, 0)
+
+[node name="Scrap5" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.053772, 0.7565228, -1.1359916)
+
+[node name="Scrap10" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(0.42623726, 0, -0.9046114, 0, 1, 0, 0.9046114, 0, 0.42623726, -15.778688, 0.96831834, -2.075149)
+
+[node name="Scrap11" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(0.42623726, 0, -0.9046114, 0, 1, 0, 0.9046114, 0, 0.42623726, -15.468919, 0.96831834, -0.30826414)
+
+[node name="Scrap12" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(0.42623726, 0, -0.9046114, 0, 1, 0, 0.9046114, 0, 0.42623726, -16.173517, 0.96831834, -0.79246604)
+
+[node name="Scrap6" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.053772, 0.7565228, -2.039886)
+
+[node name="Scrap7" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, 0)
+
+[node name="Scrap8" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, -1.1359916)
+
+[node name="Scrap9" parent="Test" instance=ExtResource("10_lesm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, -2.039886)

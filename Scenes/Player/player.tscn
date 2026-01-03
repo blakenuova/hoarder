@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dawkm5qux46eg"]
+[gd_scene load_steps=12 format=3 uid="uid://dawkm5qux46eg"]
 
 [ext_resource type="Script" uid="uid://brvg1xmmcddau" path="res://Scripts/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dweium05d13j" path="res://Assets/Textures/t_flashlightpattern.png" id="1_uvnfx"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dl3ukvuo40850" path="res://Assets/Sounds/Light Switch Click On Sfx.wav" id="3_htcer"]
 [ext_resource type="PackedScene" uid="uid://dkh18u2sg55nl" path="res://Scenes/UI/hud.tscn" id="3_xpcdj"]
 [ext_resource type="AudioStream" uid="uid://dfro8rrmv8ju" path="res://Assets/Sounds/Footsteps/01-footstep.ogg" id="4_mtuoh"]
+[ext_resource type="PackedScene" uid="uid://t13qlaue6ohv" path="res://Scenes/UI/inventory_ui.tscn" id="6_0u5uq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -70,6 +71,9 @@ target_position = Vector3(0, 1.5, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_xpcdj")]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("6_0u5uq")]
+visible = false
 
 [node name="Footstep_audio" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
