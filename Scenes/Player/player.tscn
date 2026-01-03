@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dawkm5qux46eg"]
+[gd_scene load_steps=10 format=3 uid="uid://dawkm5qux46eg"]
 
 [ext_resource type="Script" uid="uid://brvg1xmmcddau" path="res://Scripts/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dweium05d13j" path="res://Assets/Textures/t_flashlightpattern.png" id="1_uvnfx"]
+[ext_resource type="AudioStream" uid="uid://dl3ukvuo40850" path="res://Assets/Sounds/Light Switch Click On Sfx.wav" id="3_htcer"]
+[ext_resource type="PackedScene" uid="uid://dkh18u2sg55nl" path="res://Scenes/UI/hud.tscn" id="3_xpcdj"]
+[ext_resource type="AudioStream" uid="uid://dfro8rrmv8ju" path="res://Assets/Sounds/Footsteps/01-footstep.ogg" id="4_mtuoh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -34,8 +37,11 @@ shadow_enabled = true
 spot_range = 50.0
 spot_angle = 38.0
 
+[node name="Flashlight_audio" type="AudioStreamPlayer3D" parent="Head/Camera3D/Flashlight"]
+stream = ExtResource("3_htcer")
+volume_db = -45.549
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CapsuleMesh_tugb3")
 
 [node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
@@ -56,3 +62,11 @@ target_position = Vector3(0, 2.05, 0)
 [node name="CrouchRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 target_position = Vector3(0, 1.5, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_xpcdj")]
+
+[node name="Footstep_audio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+stream = ExtResource("4_mtuoh")

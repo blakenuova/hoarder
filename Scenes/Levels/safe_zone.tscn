@@ -2,11 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
 [ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
+[ext_resource type="Material" uid="uid://coy81jirltavp" path="res://Assets/Materials/wall_test_mat.tres" id="3_eq3jn"]
 [ext_resource type="Texture2D" uid="uid://cypb58cjds4qs" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_01.png" id="3_hg7jh"]
-[ext_resource type="Texture2D" uid="uid://dqfcxaw5wq6hj" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_08.png" id="3_kptrm"]
 [ext_resource type="PackedScene" uid="uid://dawkm5qux46eg" path="res://Scenes/Player/player.tscn" id="5_olhn8"]
 [ext_resource type="PackedScene" uid="uid://tamy6fexi1ir" path="res://Scenes/Interactables/door.tscn" id="5_wsbbe"]
 [ext_resource type="Script" uid="uid://c272rm5bpkjaa" path="res://Scripts/Interactable/Interactable.gd" id="6_2cs7a"]
+[ext_resource type="PackedScene" uid="uid://couv4onmpyk7p" path="res://Scenes/Interactables/light_switch.tscn" id="6_eq3jn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
 panorama = ExtResource("1_eihp4")
@@ -38,12 +39,8 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_hg7jh")
 size = Vector3(200, 0.1, 200)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olhn8"]
-albedo_texture = ExtResource("3_kptrm")
-uv1_triplanar = true
-
 [sub_resource type="BoxMesh" id="BoxMesh_2cs7a"]
-material = SubResource("StandardMaterial3D_olhn8")
+material = ExtResource("3_eq3jn")
 size = Vector3(50, 0.1, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kptrm"]
@@ -133,6 +130,7 @@ mesh = SubResource("BoxMesh_wsbbe")
 [node name="Wall6" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 5, 12)
 size = Vector3(26, 10, 1)
+material = ExtResource("3_eq3jn")
 
 [node name="Doorway" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.087818, 1.2245117, 12)
@@ -142,15 +140,25 @@ size = Vector3(1.21958, 2.4490235, 2.6328125)
 [node name="Wall5" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35000002, 5, 18.3)
 size = Vector3(0.3, 10, 13.6)
+material = ExtResource("3_eq3jn")
 
 [node name="Door" parent="Environment_Mesh" instance=ExtResource("5_wsbbe")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -11.5, 1.2502782, 11.8)
+
+[node name="Light_switch" parent="Environment_Mesh" node_paths=PackedStringArray("light_node") instance=ExtResource("6_eq3jn")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -10.578944, 1.466499, 12.511489)
+light_node = NodePath("../../Lights/OmniLight3D2")
 
 [node name="Lights" type="Node" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.7, 0)
 light_energy = 5.0
+omni_range = 36.736015
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7, 19.700521)
+light_energy = 2.0
 omni_range = 36.736015
 
 [node name="Player" parent="." instance=ExtResource("5_olhn8")]

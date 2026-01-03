@@ -24,17 +24,31 @@ var current_state = State.STAND
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # --- NODES ---
-@onready var head = $Head
 @onready var standing_shape = $StandingCollisionShape
 @onready var crouching_shape = $CrouchingCollisionShape
 @onready var prone_shape = $ProneCollisionShape
 @onready var stand_ray: RayCast3D = $StandRay
 @onready var crouch_ray: RayCast3D = $CrouchRay
 @onready var interact_ray: RayCast3D = $Head/Camera3D/InteractRay
+@onready var hud: Control = $CanvasLayer/HUD
+@onready var head = $Head
+@onready var camera = $Head/Camera3D
+
+
+# --------------- audio node ---------------
+@export_group("Audio")
+@onready var footstep_audio: AudioStreamPlayer3D = $Footstep_audio
+
+# --- Head Bobbing ---
+@export_group("Head Bob")
+@export var bob_freq = 2.4
+@export var bob_amp = 0.08
+var t_bob = 0.0
 
 
 # Flashlight
 @onready var flashlight: SpotLight3D = $Head/Camera3D/Flashlight
+@onready var flashlight_audio: AudioStreamPlayer3D = $Head/Camera3D/Flashlight/Flashlight_audio
 
 
 
@@ -98,6 +112,8 @@ func _physics_process(delta):
 	
 	# Lerp (Linear Interpolate) head position for smooth transition
 	head.position.y = lerp(head.position.y, target_height, delta * lerp_speed)
+	
+	_headbob(delta)
 
 
 #-------------------------------------------------------------------------------
@@ -107,6 +123,7 @@ func _physics_process(delta):
 func _flashlight():
 	if Input.is_action_just_pressed("flashlight"):
 		flashlight.visible = !flashlight.visible
+		flashlight_audio.play()
 
 func handle_stance():
 	var target_state = State.STAND
@@ -160,13 +177,53 @@ func get_current_speed() -> float:
 func _interaction_logic():
 	# 1. Check if Raycast is hitting anything
 	if interact_ray.is_colliding():
-		# Get the object the ray hit
 		var collider = interact_ray.get_collider()
-	
-		# 2. Check if that object is an "Interactable"
+		
+		# 2. Is it Interactable?
 		if collider is Interactable:
-			# (Optional) TODO: Send collider.prompt_message to UI here
-	
-			# 3. If player presses button, trigger interaction
+			# SHOW PROMPT on UI
+			hud.update_prompt(collider.prompt_message)
+			
+			# Interact on key press
 			if Input.is_action_just_pressed("interact"):
 				collider.interact(self)
+		else:
+			# Hitting something, but it's not interactive (like a wall)
+			hud.clear_prompt()
+	else:
+		# Not looking at anything
+		hud.clear_prompt()
+
+func _headbob(delta):
+	if is_on_floor():
+		# Only bob if moving
+		if velocity.length() > 0.1: 
+			# Increment time based on speed (faster run = faster bob)
+			t_bob += delta * velocity.length() * float(is_on_floor())
+			
+			# Calculate the Sine Wave
+			# sin(t_bob * bob_freq) creates the up/down wave
+			var pos = Vector3.ZERO
+			pos.y = sin(t_bob * bob_freq) * bob_amp
+			pos.x = cos(t_bob * bob_freq / 2) * bob_amp # Slower side-to-side sway
+			
+			# Apply to Camera (local position)
+			camera.transform.origin = pos
+			
+			# --- FOOTSTEP AUDIO LOGIC ---
+			# If the sine wave is at the "bottom" (the step), play sound.
+			# We check a small window near -1.0 on the sine wave.
+			var low_pos = sin(t_bob * bob_freq)
+			
+			# If the cycle just hit the bottom ( > -0.95 is purely for timing tolerance)
+			# We use a timer check or simple math to ensure it doesn't spam every frame
+			# A simple way: check if we just crossed a threshold
+			if low_pos < -0.90 and !footstep_audio.playing:
+				# Randomize pitch slightly for variety
+				footstep_audio.pitch_scale = randf_range(0.8, 1.1)
+				footstep_audio.play()
+				
+		else:
+			# Reset camera smoothly when stopped
+			t_bob = 0.0
+			camera.transform.origin = camera.transform.origin.lerp(Vector3.ZERO, delta * 5.0)

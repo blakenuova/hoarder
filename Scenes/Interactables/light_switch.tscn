@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://couv4onmpyk7p"]
+
+[ext_resource type="Script" uid="uid://dcvw1t6w3xqcu" path="res://Scripts/Interactable/light_switch.gd" id="1_kkwvw"]
+[ext_resource type="AudioStream" uid="uid://dl3ukvuo40850" path="res://Assets/Sounds/Light Switch Click On Sfx.wav" id="2_umyc3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dd6ta"]
+size = Vector3(0.5, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kkwvw"]
+size = Vector3(0.5283203, 1, 0.32226563)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umyc3"]
+albedo_color = Color(0.19434929, 0.19434926, 0.19434926, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kkc4q"]
+material = SubResource("StandardMaterial3D_umyc3")
+size = Vector3(0.2, 0.8, 0.2)
+
+[node name="Light_switch" type="StaticBody3D" node_paths=PackedStringArray("switch_mesh")]
+script = ExtResource("1_kkwvw")
+switch_mesh = NodePath("Flipper")
+prompt_message = "Toggle Light"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dd6ta")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kkwvw")
+
+[node name="Flipper" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0.044151187)
+mesh = SubResource("BoxMesh_kkc4q")
+
+[node name="SwitchAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_umyc3")
