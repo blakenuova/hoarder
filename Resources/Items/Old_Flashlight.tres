@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bahu35yfb682w"]
+
+[ext_resource type="Texture2D" uid="uid://cv3xp3lpwxe3l" path="res://Assets/Textures/Resource Icons/flashlight.png" id="1_sev3s"]
+[ext_resource type="Script" uid="uid://d2b8ulgugbiy6" path="res://Scenes/Inventory/item_data.gd" id="1_x6236"]
+
+[resource]
+script = ExtResource("1_x6236")
+name = "Old Flashlight"
+description = "It flickers, but it works."
+icon = ExtResource("1_sev3s")
+metadata/_custom_type_script = "uid://d2b8ulgugbiy6"

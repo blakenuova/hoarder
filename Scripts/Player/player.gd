@@ -33,6 +33,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var hud: Control = $CanvasLayer/HUD
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var inventory: Inventory = $Inventory
 
 
 # --------------- audio node ---------------
@@ -227,3 +228,6 @@ func _headbob(delta):
 			# Reset camera smoothly when stopped
 			t_bob = 0.0
 			camera.transform.origin = camera.transform.origin.lerp(Vector3.ZERO, delta * 5.0)
+
+func collect_item(item_data: ItemData):
+	inventory.add_item(item_data)

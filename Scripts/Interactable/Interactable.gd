@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends CollisionObject3D
 class_name Interactable
 
 # The text to show on UI when looking at this (e.g. "Open Door", "Pick up Ammo")

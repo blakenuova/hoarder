@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://yt416ssqoqfs"]
+[gd_scene load_steps=24 format=3 uid="uid://yt416ssqoqfs"]
 
 [ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
 [ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://tamy6fexi1ir" path="res://Scenes/Interactables/door.tscn" id="5_wsbbe"]
 [ext_resource type="Script" uid="uid://c272rm5bpkjaa" path="res://Scripts/Interactable/Interactable.gd" id="6_2cs7a"]
 [ext_resource type="PackedScene" uid="uid://couv4onmpyk7p" path="res://Scenes/Interactables/light_switch.tscn" id="6_eq3jn"]
+[ext_resource type="PackedScene" uid="uid://pa7qbuhfjv2p" path="res://Scenes/Inventory/Items/flashlight.tscn" id="9_r6koe"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
 panorama = ExtResource("1_eihp4")
@@ -186,3 +187,6 @@ mesh = SubResource("BoxMesh_eq3jn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Test/Interact_test_box"]
 shape = SubResource("BoxShape3D_r6koe")
+
+[node name="Flashlight" parent="Test" instance=ExtResource("9_r6koe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0636086, 1.3158844, 0)
