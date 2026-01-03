@@ -8,4 +8,5 @@ script = ExtResource("1_x6236")
 name = "Old Flashlight"
 description = "It flickers, but it works."
 icon = ExtResource("1_sev3s")
+pickup_scene_path = "uid://pa7qbuhfjv2p"
 metadata/_custom_type_script = "uid://d2b8ulgugbiy6"

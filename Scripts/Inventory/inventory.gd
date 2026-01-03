@@ -14,3 +14,7 @@ func add_item(item: ItemData):
 	
 	# Shout! Tell the UI to update. Shout: "Hey! The list changed! Here is the new list!"
 	inventory_updated.emit(items)
+
+func remove_item_at_index(index: int):
+	items.remove_at(index)
+	inventory_updated.emit(items)

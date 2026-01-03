@@ -9,4 +9,5 @@ name = "Scrap"
 description = "Pile of Junk"
 stackable = true
 icon = ExtResource("1_4d087")
+pickup_scene_path = "uid://s1wgwcxpxije"
 metadata/_custom_type_script = "uid://d2b8ulgugbiy6"

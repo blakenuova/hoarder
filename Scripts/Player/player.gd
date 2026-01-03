@@ -65,8 +65,24 @@ func _ready():
 	# --- CONNECT SIGNALS ---
 	# When inventory changes, tell UI to update
 	inventory.inventory_updated.connect(inventory_ui.update_grid)
+	
+	# Listen for Drop Request
+	inventory_ui.drop_item.connect(_on_drop_item)
 
 func _input(event):
+	# Toggle Inventory (Always allow this so we can close it!)
+	if event.is_action_pressed("inventory"):
+		inventory_ui.visible = !inventory_ui.visible
+		if inventory_ui.visible:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			
+	# --- BLOCKER ---
+	# If inventory is open, ignore camera look
+	if inventory_ui.visible:
+		return
+		
 	# Camera Look Logic
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
@@ -81,17 +97,12 @@ func _input(event):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		
 	
-	# Toggle Inventory
-	if event.is_action_pressed("inventory"): # Make sure "inventory" is in your Input Map (e.g. Tab or I)
-		inventory_ui.visible = !inventory_ui.visible
-		
-		# Unlock mouse when inventory is open
-		if inventory_ui.visible:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
+	# --- BLOCKER ---
+	if inventory_ui.visible:
+		return # Stop all movement calculations
+	
 	_flashlight()
 	_interaction_logic()
 	
@@ -247,3 +258,28 @@ func _headbob(delta):
 
 func collect_item(item_data: ItemData):
 	inventory.add_item(item_data)
+
+func _on_drop_item(index: int):
+	var item_to_drop = inventory.items[index]
+	
+	# CHECK IF PATH IS NOT EMPTY
+	if item_to_drop.pickup_scene_path != "":
+		
+		# 1. LOAD THE SCENE MANUALLY
+		var scene_resource = load(item_to_drop.pickup_scene_path)
+		
+		# 2. INSTANTIATE IT
+		var pickup_instance = scene_resource.instantiate()
+		get_parent().add_child(pickup_instance)
+		
+		# Position it
+		var drop_position = head.global_position - (head.global_transform.basis.z * 1.5)
+		pickup_instance.global_position = drop_position
+		
+		# IMPORTANT: If the spawned pickup needs to know what it is, re-assign the data!
+		# (This is safe because it happens at runtime, not save-time)
+		if pickup_instance is Pickup: # Assuming your class_name is Pickup
+			pickup_instance.item_data = item_to_drop
+
+	# 3. Remove from Inventory
+	inventory.remove_item_at_index(index)
