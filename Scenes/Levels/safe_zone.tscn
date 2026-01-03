@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://yt416ssqoqfs"]
+[gd_scene load_steps=19 format=3 uid="uid://yt416ssqoqfs"]
 
 [ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
 [ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
 [ext_resource type="Texture2D" uid="uid://cypb58cjds4qs" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_01.png" id="3_hg7jh"]
 [ext_resource type="Texture2D" uid="uid://dqfcxaw5wq6hj" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_08.png" id="3_kptrm"]
+[ext_resource type="PackedScene" uid="uid://dawkm5qux46eg" path="res://Scenes/Player/player.tscn" id="5_olhn8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
 panorama = ExtResource("1_eihp4")
@@ -129,3 +130,6 @@ mesh = SubResource("BoxMesh_wsbbe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.7, 0)
 light_energy = 5.0
 omni_range = 36.736015
+
+[node name="Player" parent="." instance=ExtResource("5_olhn8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1262672, 0)
