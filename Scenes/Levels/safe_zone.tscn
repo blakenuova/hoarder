@@ -133,3 +133,20 @@ omni_range = 36.736015
 
 [node name="Player" parent="." instance=ExtResource("5_olhn8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1262672, 0)
+
+[node name="Test" type="Node" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4, 0.95000017, 0)
+use_collision = true
+size = Vector3(1, 1.7, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4, 1.7000003, -4.7493896)
+use_collision = true
+size = Vector3(3, 0.2, 10.498779)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4, 1.4000002, 2.5943604)
+use_collision = true
+size = Vector3(3, 0.2, 11)

@@ -35,13 +35,11 @@ spot_range = 50.0
 spot_angle = 38.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_tugb3")
 
 [node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uvnfx")
-
-[node name="CeilingDetector" type="RayCast3D" parent="."]
-target_position = Vector3(0, 1.1, 0)
 
 [node name="CrouchingCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25078124, 0)
@@ -50,3 +48,11 @@ shape = SubResource("CapsuleShape3D_a3d8c")
 [node name="ProneCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CapsuleShape3D_xpcdj")
+
+[node name="StandRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 2.05, 0)
+
+[node name="CrouchRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 1.5, 0)
