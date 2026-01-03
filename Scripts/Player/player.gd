@@ -30,6 +30,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var prone_shape = $ProneCollisionShape
 @onready var stand_ray: RayCast3D = $StandRay
 @onready var crouch_ray: RayCast3D = $CrouchRay
+@onready var interact_ray: RayCast3D = $Head/Camera3D/InteractRay
 
 
 # Flashlight
@@ -61,7 +62,7 @@ func _input(event):
 
 func _physics_process(delta):
 	_flashlight()
-	
+	_interaction_logic()
 	
 	# 1. Handle Stance (Crouch/Prone)
 	handle_stance()
@@ -155,3 +156,17 @@ func get_current_speed() -> float:
 			if Input.is_action_pressed("run"): return run_speed
 			return walk_speed
 	return walk_speed
+
+func _interaction_logic():
+	# 1. Check if Raycast is hitting anything
+	if interact_ray.is_colliding():
+		# Get the object the ray hit
+		var collider = interact_ray.get_collider()
+	
+		# 2. Check if that object is an "Interactable"
+		if collider is Interactable:
+			# (Optional) TODO: Send collider.prompt_message to UI here
+	
+			# 3. If player presses button, trigger interaction
+			if Input.is_action_just_pressed("interact"):
+				collider.interact(self)

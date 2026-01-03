@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://yt416ssqoqfs"]
+[gd_scene load_steps=23 format=3 uid="uid://yt416ssqoqfs"]
 
 [ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
 [ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
 [ext_resource type="Texture2D" uid="uid://cypb58cjds4qs" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_01.png" id="3_hg7jh"]
 [ext_resource type="Texture2D" uid="uid://dqfcxaw5wq6hj" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_08.png" id="3_kptrm"]
 [ext_resource type="PackedScene" uid="uid://dawkm5qux46eg" path="res://Scenes/Player/player.tscn" id="5_olhn8"]
+[ext_resource type="PackedScene" uid="uid://tamy6fexi1ir" path="res://Scenes/Interactables/door.tscn" id="5_wsbbe"]
+[ext_resource type="Script" uid="uid://c272rm5bpkjaa" path="res://Scripts/Interactable/Interactable.gd" id="6_2cs7a"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
 panorama = ExtResource("1_eihp4")
@@ -62,6 +64,10 @@ roughness = 0.6
 [sub_resource type="BoxMesh" id="BoxMesh_wsbbe"]
 material = SubResource("StandardMaterial3D_2cs7a")
 size = Vector3(42, 8, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eq3jn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6koe"]
 
 [node name="Safe_zone" type="Node3D"]
 
@@ -124,6 +130,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2, -25)
 use_collision = true
 mesh = SubResource("BoxMesh_wsbbe")
 
+[node name="Wall6" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 5, 12)
+size = Vector3(26, 10, 1)
+
+[node name="Doorway" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.087818, 1.2245117, 12)
+operation = 2
+size = Vector3(1.21958, 2.4490235, 2.6328125)
+
+[node name="Wall5" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35000002, 5, 18.3)
+size = Vector3(0.3, 10, 13.6)
+
+[node name="Door" parent="Environment_Mesh" instance=ExtResource("5_wsbbe")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -11.5, 1.2502782, 11.8)
+
 [node name="Lights" type="Node" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
@@ -136,17 +158,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1262672, 0)
 
 [node name="Test" type="Node" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Test"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4, 0.95000017, 0)
-use_collision = true
-size = Vector3(1, 1.7, 1)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Test"]
+[node name="Crouch_Height_Space" type="CSGBox3D" parent="Test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4, 1.7000003, -4.7493896)
 use_collision = true
 size = Vector3(3, 0.2, 10.498779)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Test"]
+[node name="Prone_Height_Space" type="CSGBox3D" parent="Test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4, 1.4000002, 2.5943604)
 use_collision = true
 size = Vector3(3, 0.2, 11)
+
+[node name="Interact_test_box" type="StaticBody3D" parent="Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5492626, 0)
+script = ExtResource("6_2cs7a")
+prompt_message = "Test Box"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Test/Interact_test_box"]
+mesh = SubResource("BoxMesh_eq3jn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Test/Interact_test_box"]
+shape = SubResource("BoxShape3D_r6koe")

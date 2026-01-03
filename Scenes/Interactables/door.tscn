@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://tamy6fexi1ir"]
+
+[ext_resource type="Texture2D" uid="uid://c5toxbet4ffmq" path="res://Assets/Prototyping-Testing/Grids/Green/texture_12.png" id="1_83irr"]
+[ext_resource type="Script" uid="uid://b7iritldp3jow" path="res://Scripts/Interactable/door.gd" id="1_olwfu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olwfu"]
+albedo_texture = ExtResource("1_83irr")
+uv1_scale = Vector3(0.54, 0.805, 1)
+uv1_offset = Vector3(0.23, 0.23, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kdj5f"]
+size = Vector3(1, 2, 0.1)
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_olwfu")
+prompt_message = "Open Door"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+size = Vector3(1, 2, 0.1)
+material = SubResource("StandardMaterial3D_olwfu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+shape = SubResource("BoxShape3D_kdj5f")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.9, 0, 0)
+radius = 0.03955078
+height = 0.22363281
