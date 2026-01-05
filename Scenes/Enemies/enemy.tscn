@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5fdwt0meq1if"]
+
+[ext_resource type="Script" uid="uid://8tqodn4o7hb7" path="res://Scripts/Enemy/enemy.gd" id="1_613su"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pdns"]
+albedo_color = Color(1, 0, 0.12156863, 1)
+metallic = 0.73
+roughness = 0.82
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_613su"]
+material = SubResource("StandardMaterial3D_3pdns")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jcvw6"]
+top_radius = 0.175
+bottom_radius = 0.41
+height = 0.73
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1rqp"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 1.0
+roughness = 0.9
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ubio8"]
+material = SubResource("StandardMaterial3D_x1rqp")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_miwey"]
+
+[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_613su")
+
+[node name="body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_613su")
+
+[node name="eye" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, -1.9155687e-08, 1, 0, -0.43823105, -4.371139e-08, 0, 0.43094504, -0.42694402)
+mesh = SubResource("CylinderMesh_jcvw6")
+
+[node name="Pupil" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42711508, -0.39374912)
+mesh = SubResource("SphereMesh_ubio8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_miwey")

@@ -1,20 +1,20 @@
-[gd_scene load_steps=29 format=3 uid="uid://yt416ssqoqfs"]
+[gd_scene load_steps=29 format=3 uid="uid://cykrwqdrmjupw"]
 
-[ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
-[ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
-[ext_resource type="Material" uid="uid://coy81jirltavp" path="res://Assets/Materials/wall_test_mat.tres" id="3_eq3jn"]
-[ext_resource type="Texture2D" uid="uid://cypb58cjds4qs" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_01.png" id="3_hg7jh"]
-[ext_resource type="PackedScene" uid="uid://dawkm5qux46eg" path="res://Scenes/Player/player.tscn" id="5_olhn8"]
-[ext_resource type="PackedScene" uid="uid://tamy6fexi1ir" path="res://Scenes/Interactables/door.tscn" id="5_wsbbe"]
-[ext_resource type="Script" uid="uid://c272rm5bpkjaa" path="res://Scripts/Interactable/Interactable.gd" id="6_2cs7a"]
-[ext_resource type="PackedScene" uid="uid://couv4onmpyk7p" path="res://Scenes/Interactables/light_switch.tscn" id="6_eq3jn"]
-[ext_resource type="PackedScene" uid="uid://pa7qbuhfjv2p" path="res://Scenes/Inventory/Items/flashlight.tscn" id="9_r6koe"]
-[ext_resource type="PackedScene" uid="uid://s1wgwcxpxije" path="res://Scenes/Inventory/Items/scrap.tscn" id="10_lesm6"]
-[ext_resource type="PackedScene" uid="uid://8pvex1nnyd40" path="res://Scenes/Inventory/Items/MedkitPickup.tscn" id="11_nv2pg"]
-[ext_resource type="PackedScene" uid="uid://b5fdwt0meq1if" path="res://Scenes/Enemies/enemy.tscn" id="12_ugwsj"]
+[ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_4efs8"]
+[ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_4kcdj"]
+[ext_resource type="Material" uid="uid://coy81jirltavp" path="res://Assets/Materials/wall_test_mat.tres" id="3_33pvy"]
+[ext_resource type="Texture2D" uid="uid://cypb58cjds4qs" path="res://Assets/Prototyping-Testing/Grids/Orange/texture_01.png" id="4_1q7xv"]
+[ext_resource type="PackedScene" uid="uid://tamy6fexi1ir" path="res://Scenes/Interactables/door.tscn" id="5_vngmv"]
+[ext_resource type="PackedScene" uid="uid://couv4onmpyk7p" path="res://Scenes/Interactables/light_switch.tscn" id="6_38ep1"]
+[ext_resource type="PackedScene" uid="uid://dawkm5qux46eg" path="res://Scenes/Player/player.tscn" id="7_kkibr"]
+[ext_resource type="Script" uid="uid://c272rm5bpkjaa" path="res://Scripts/Interactable/Interactable.gd" id="8_t43sd"]
+[ext_resource type="PackedScene" uid="uid://pa7qbuhfjv2p" path="res://Scenes/Inventory/Items/flashlight.tscn" id="9_x0h0q"]
+[ext_resource type="PackedScene" uid="uid://s1wgwcxpxije" path="res://Scenes/Inventory/Items/scrap.tscn" id="10_42djl"]
+[ext_resource type="PackedScene" uid="uid://8pvex1nnyd40" path="res://Scenes/Inventory/Items/MedkitPickup.tscn" id="11_m1h85"]
+[ext_resource type="PackedScene" uid="uid://b5fdwt0meq1if" path="res://Scenes/Enemies/enemy.tscn" id="12_v56u2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
-panorama = ExtResource("1_eihp4")
+panorama = ExtResource("1_4efs8")
 
 [sub_resource type="Sky" id="Sky_hg7jh"]
 sky_material = SubResource("PanoramaSkyMaterial_erxk3")
@@ -36,19 +36,19 @@ radius = 80.5
 height = 150.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hg7jh"]
-albedo_texture = ExtResource("2_erxk3")
+albedo_texture = ExtResource("2_4kcdj")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_kptrm"]
 material = SubResource("StandardMaterial3D_hg7jh")
-size = Vector3(200, 0.1, 200)
+size = Vector3(1000, 0.1, 1000)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2cs7a"]
-material = ExtResource("3_eq3jn")
+material = ExtResource("3_33pvy")
 size = Vector3(50, 0.1, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kptrm"]
-albedo_texture = ExtResource("3_hg7jh")
+albedo_texture = ExtResource("4_1q7xv")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_olhn8"]
@@ -138,22 +138,30 @@ mesh = SubResource("BoxMesh_wsbbe")
 [node name="Wall6" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 5, 12)
 size = Vector3(26, 10, 1)
-material = ExtResource("3_eq3jn")
+material = ExtResource("3_33pvy")
 
 [node name="Doorway" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.087818, 1.2245117, 12)
 operation = 2
 size = Vector3(1.21958, 2.4490235, 2.6328125)
 
+[node name="Doorway2" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.115717, 1.2245117, 25.29478)
+operation = 2
+size = Vector3(1.21958, 2.4490235, 2.6328125)
+
 [node name="Wall5" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35000002, 5, 18.3)
 size = Vector3(0.3, 10, 13.6)
-material = ExtResource("3_eq3jn")
+material = ExtResource("3_33pvy")
 
-[node name="Door" parent="Environment_Mesh" instance=ExtResource("5_wsbbe")]
+[node name="Door" parent="Environment_Mesh" instance=ExtResource("5_vngmv")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -11.5, 1.2502782, 11.8)
 
-[node name="Light_switch" parent="Environment_Mesh" node_paths=PackedStringArray("light_node") instance=ExtResource("6_eq3jn")]
+[node name="Door2" parent="Environment_Mesh" instance=ExtResource("5_vngmv")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 4.703535, 1.2502782, 24.994955)
+
+[node name="Light_switch" parent="Environment_Mesh" node_paths=PackedStringArray("light_node") instance=ExtResource("6_38ep1")]
 transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -10.578944, 1.466499, 12.511489)
 light_node = NodePath("../../Lights/OmniLight3D2")
 
@@ -169,7 +177,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7, 19.700521)
 light_energy = 2.0
 omni_range = 36.736015
 
-[node name="Player" parent="." instance=ExtResource("5_olhn8")]
+[node name="Player" parent="." instance=ExtResource("7_kkibr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1262672, 0)
 
 [node name="Test" type="Node" parent="."]
@@ -186,7 +194,7 @@ size = Vector3(3, 0.2, 11)
 
 [node name="Interact_test_box" type="StaticBody3D" parent="Test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5492626, 0)
-script = ExtResource("6_2cs7a")
+script = ExtResource("8_t43sd")
 prompt_message = "Test Box"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Test/Interact_test_box"]
@@ -195,46 +203,46 @@ mesh = SubResource("BoxMesh_eq3jn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Test/Interact_test_box"]
 shape = SubResource("BoxShape3D_r6koe")
 
-[node name="Flashlight" parent="Test" instance=ExtResource("9_r6koe")]
+[node name="Flashlight" parent="Test" instance=ExtResource("9_x0h0q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0636086, 1.3158844, 0)
 
-[node name="Scrap" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.04581, 0.7565228, 0)
 
-[node name="Scrap2" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap2" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.04581, 0.7565228, -1.1359916)
 
-[node name="Scrap3" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap3" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.04581, 0.7565228, -2.039886)
 
-[node name="Scrap4" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap4" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.053772, 0.7565228, 0)
 
-[node name="Scrap5" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap5" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.053772, 0.7565228, -1.1359916)
 
-[node name="Scrap10" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap10" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(0.42623726, 0, -0.9046114, 0, 1, 0, 0.9046114, 0, 0.42623726, -15.778688, 0.96831834, -2.075149)
 
-[node name="Scrap11" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap11" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(0.42623726, 0, -0.9046114, 0, 1, 0, 0.9046114, 0, 0.42623726, -15.468919, 0.96831834, -0.30826414)
 
-[node name="Scrap12" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap12" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(0.42623726, 0, -0.9046114, 0, 1, 0, 0.9046114, 0, 0.42623726, -16.173517, 0.96831834, -0.79246604)
 
-[node name="Scrap6" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap6" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.053772, 0.7565228, -2.039886)
 
-[node name="Scrap7" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap7" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, 0)
 
-[node name="Scrap8" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap8" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, -1.1359916)
 
-[node name="Scrap9" parent="Test" instance=ExtResource("10_lesm6")]
+[node name="Scrap9" parent="Test" instance=ExtResource("10_42djl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, -2.039886)
 
-[node name="Flashlight" parent="." instance=ExtResource("11_nv2pg")]
+[node name="Flashlight" parent="." instance=ExtResource("11_m1h85")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.564266, 1.5622956, 0)
 
 [node name="Enemy_Test" type="Node" parent="."]
@@ -249,5 +257,5 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Test/DummyTest1"]
 shape = SubResource("CapsuleShape3D_ugwsj")
 
-[node name="Enemy" parent="Enemy_Test" instance=ExtResource("12_ugwsj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9006288, 1.388246, 6.8118286)
+[node name="Enemy" parent="Enemy_Test" instance=ExtResource("12_v56u2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5650873, 1.388246, 41.432034)
