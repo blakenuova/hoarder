@@ -1,62 +1,55 @@
 extends CharacterBody3D
 
-@export var max_health: int = 30 # Dies in 3 shots (if gun does 10 dmg)
-@export var speed: float = 3.0
-@export var damage_to_player: int = 10
-var current_health: int
+@export var speed = 4.0
 
-@onready var body: MeshInstance3D = $body
-@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
-
-# We need to find the player. We'll do this in _ready.
-var player = null
+@onready var nav_agent = $NavigationAgent3D
 
 func _ready():
-	current_health = max_health
+	# 1. Wait for map to sync
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	
-	# Simple way to find the player: 
-	# (Make sure your Player node is in the main scene tree!)
-	# Ideally, put your Player in a Group called "Player" to make this safer.
-	player = get_tree().get_first_node_in_group("Player")
-	if not player:
-		print("Enemy Warning: No Player found!")
+	# 2. Find Player Group
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		# Set target immediately to test path
+		nav_agent.target_position = player.global_position
+	else:
+		print("CRITICAL ERROR: No node in 'Player' group found!")
 
 func _physics_process(delta):
+	# Continuously update target to player position
+	var player = get_tree().get_first_node_in_group("Player")
 	if player:
-		# 1. Tell the agent where we want to go (Player's position)
 		nav_agent.target_position = player.global_position
+
+	if nav_agent.is_navigation_finished():
+		return 
+
+	var next_path_position = nav_agent.get_next_path_position()
+	var current_agent_position = global_position
+	
+	# --- THE FIX STARTS HERE ---
+	# 1. Calculate the raw difference
+	var offset = next_path_position - current_agent_position
+	
+	# 2. FLATTEN IT: Force Y to 0 so we don't try to walk into the floor
+	offset.y = 0 
+	
+	# 3. Normalize to get direction
+	var new_velocity = offset.normalized() * speed
+	# --- THE FIX ENDS HERE ---
+	
+	velocity = new_velocity
+	
+	# Gravity logic
+	if not is_on_floor():
+		velocity.y -= 9.8 * delta
+	else:
+		velocity.y = 0
 		
-		# 2. Get the next point on the path
-		var next_path_position = nav_agent.get_next_path_position()
-		
-		# 3. Calculate direction towards that point
-		var current_agent_position = global_position
-		var new_velocity = (next_path_position - current_agent_position).normalized() * speed
-		
-		# 4. Move
-		velocity = new_velocity
-		move_and_slide()
-		
-		# 5. Rotate to face player (Optional)
+	move_and_slide()
+	
+	# Look at player
+	if player:
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z))
-
-
-
-# This is the function your Gun calls!
-func take_damage(amount: int):
-	current_health -= amount
-	
-	print("Enemy hit! Health: " + str(current_health))
-	
-	# Flash Red (Optional visual feedback)
-	body.transparency = 0.5
-	await get_tree().create_timer(0.1).timeout
-	body.transparency = 0.0
-	
-	if current_health <= 0:
-		die()
-
-func die():
-	print("Enemy Died!")
-	# Optional: Play sound or particle effect here
-	queue_free() # Delete the object

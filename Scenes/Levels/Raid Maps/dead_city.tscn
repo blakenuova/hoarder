@@ -36,8 +36,8 @@ radius = 80.5
 height = 150.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_sdjbu"]
-vertices = PackedVector3Array(-499.5, 0.45, -24, -25.75, 0.45, -23.75, -25.75, 0.45, -25.25, -25.25, 0.45, -25.75, -23.75, 0.45, -25.75, -24, 0.45, -499.5, -499.5, 0.45, -499.5, 24, 0.45, -25.75, 24.25, 0.45, -499.5, 25.5, 0.45, -25.75, 25.75, 0.45, -24, 499.5, 0.45, -24.25, 499.5, 0.45, -499.5, -24.75, 10.45, -24.75, -25, 10.45, 11.75, -24.75, 10.45, 24.75, 24.75, 10.45, 24.75, 24.75, 10.45, -24.75, -0.5, 0.45, 11, -0.25, 0.45, -24.25, -24.25, 0.45, -24.25, -24.25, 0.45, 11, 3.25, 0.45, 24.25, 3.5, 0.45, 25, 4, 0.45, 25, 4.25, 0.45, 24.25, 1.25, 0.45, 11.25, 1.25, 0.45, 24.25, 24.25, 0.45, 24.25, 24.25, 0.45, -24.25, 25.75, 0.45, 24, 499.5, 0.45, 24.25, -499.5, 0.45, 24.25, -25.75, 0.45, 24, -24.25, 0.45, 13.25, -24.25, 0.45, 24.25, -0.5, 0.45, 24.25, -0.5, 0.45, 13.25, -25.75, 0.45, 25.5, -24.25, 0.45, 499.5, -24, 0.45, 25.75, -499.5, 0.45, 499.5, 25.5, 0.45, 25.75, 24, 0.45, 25.75, 24.25, 0.45, 499.5, 499.5, 0.45, 499.5, 4.25, 0.45, 25.75, 3.25, 0.45, 25.75)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 6), PackedInt32Array(3, 6, 5), PackedInt32Array(4, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(9, 7, 8), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 8), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 17), PackedInt32Array(15, 17, 16), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 26), PackedInt32Array(26, 18, 19), PackedInt32Array(22, 27, 26), PackedInt32Array(25, 26, 28), PackedInt32Array(28, 26, 19), PackedInt32Array(28, 19, 29), PackedInt32Array(10, 11, 30), PackedInt32Array(30, 11, 31), PackedInt32Array(33, 32, 1), PackedInt32Array(1, 32, 0), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(32, 33, 38), PackedInt32Array(40, 39, 38), PackedInt32Array(38, 39, 41), PackedInt32Array(38, 41, 32), PackedInt32Array(44, 43, 42), PackedInt32Array(30, 31, 42), PackedInt32Array(42, 31, 45), PackedInt32Array(42, 45, 44), PackedInt32Array(24, 46, 23), PackedInt32Array(23, 46, 47), PackedInt32Array(47, 46, 44), PackedInt32Array(40, 47, 39), PackedInt32Array(39, 47, 44), PackedInt32Array(46, 43, 44)]
+vertices = PackedVector3Array(-499.5, 0.45, -24, -25.75, 0.45, -23.75, -25.75, 0.45, -25.25, -25.25, 0.45, -25.75, -23.75, 0.45, -25.75, -24, 0.45, -499.5, -499.5, 0.45, -499.5, 24, 0.45, -25.75, 24.25, 0.45, -499.5, 25.5, 0.45, -25.75, 25.75, 0.45, -24, 499.5, 0.45, -24.25, 499.5, 0.45, -499.5, -24.75, 10.45, -24.75, -25, 10.45, 11.75, -24.75, 10.45, 24.75, 24.75, 10.45, 24.75, 24.75, 10.45, -24.75, -0.5, 0.45, 11, -0.25, 0.45, -24.25, -24.25, 0.45, -24.25, -24.25, 0.45, 11, 3.25, 0.45, 24.25, 3.5, 0.45, 25, 4, 0.45, 25, 4.25, 0.45, 24.25, 1.25, 0.45, 11.25, 1.25, 0.45, 24.25, 24.25, 0.45, 24.25, 24.25, 0.45, -24.25, 25.75, 0.45, 24, 499.5, 0.45, 24.25, -499.5, 0.45, 24.25, -25.75, 0.45, 24, -24.25, 0.45, 13.25, -24.25, 0.45, 24.25, -0.5, 0.45, 24.25, -0.5, 0.45, 13.25, 4.25, 0.45, 25.75, 3.25, 0.45, 25.75, 25, 0.45, 499.5, 25, 0.45, 54.5, 24, 0.45, 54.25, 24, 0.45, 38.5, 24.75, 0.45, 38.25, 24.75, 0.45, 25.75, -25.5, 0.45, 25.75, -499.5, 0.45, 499.5, 25.75, 0.45, 25.5, 26, 0.45, 38.5, 26, 0.45, 40.5, 499.5, 0.45, 40.5, 26, 0.45, 52.25, 499.5, 0.45, 52.25, 26, 0.45, 54.25, 499.5, 0.45, 499.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 6), PackedInt32Array(3, 6, 5), PackedInt32Array(4, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(9, 7, 8), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 8), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 17), PackedInt32Array(15, 17, 16), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 26), PackedInt32Array(26, 18, 19), PackedInt32Array(22, 27, 26), PackedInt32Array(25, 26, 28), PackedInt32Array(28, 26, 19), PackedInt32Array(28, 19, 29), PackedInt32Array(10, 11, 30), PackedInt32Array(30, 11, 31), PackedInt32Array(33, 32, 1), PackedInt32Array(1, 32, 0), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(24, 38, 23), PackedInt32Array(23, 38, 39), PackedInt32Array(42, 41, 40), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 38), PackedInt32Array(32, 33, 46), PackedInt32Array(39, 38, 43), PackedInt32Array(43, 42, 39), PackedInt32Array(39, 42, 46), PackedInt32Array(42, 40, 46), PackedInt32Array(46, 40, 32), PackedInt32Array(32, 40, 47), PackedInt32Array(45, 48, 44), PackedInt32Array(44, 48, 49), PackedInt32Array(51, 50, 49), PackedInt32Array(48, 30, 49), PackedInt32Array(49, 30, 31), PackedInt32Array(49, 31, 51), PackedInt32Array(50, 51, 52), PackedInt32Array(52, 51, 53), PackedInt32Array(41, 54, 40), PackedInt32Array(40, 54, 55), PackedInt32Array(55, 54, 53), PackedInt32Array(54, 52, 53)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hg7jh"]
 albedo_texture = ExtResource("2_4kcdj")
@@ -97,6 +97,16 @@ mesh = SubResource("SphereMesh_erxk3")
 
 [node name="Environment_Mesh" type="Node3D" parent="."]
 
+[node name="Light_switch" parent="Environment_Mesh" node_paths=PackedStringArray("light_node") instance=ExtResource("6_38ep1")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -10.578944, 1.466499, 12.511489)
+light_node = NodePath("../../Lights/OmniLight3D2")
+
+[node name="Door" parent="Environment_Mesh" instance=ExtResource("5_vngmv")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -11.5, 1.2502782, 11.8)
+
+[node name="Door2" parent="Environment_Mesh" instance=ExtResource("5_vngmv")]
+transform = Transform3D(1.8515737, 0, 0, 0, 1.3982909, 0, 0, 0, 1.2, 4.703535, 1.4502783, 24.994955)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Environment_Mesh"]
 navigation_mesh = SubResource("NavigationMesh_sdjbu")
 
@@ -128,7 +138,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_olhn8")
 
 [node name="Wall7" type="CSGMesh3D" parent="Environment_Mesh/NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(-1.3113417e-08, 0, -1, 0, 1, 0, 0.3, 0, -4.371139e-08, 25, 5, 46.331406)
+transform = Transform3D(-1.31134215e-08, 0, -9.565916, 0, 1, 0, 0.30000013, 0, -4.1813948e-07, 25, 5, 46.331406)
 use_collision = true
 mesh = SubResource("BoxMesh_olhn8")
 
@@ -167,16 +177,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35000002, 5, 18.3)
 size = Vector3(0.3, 10, 13.6)
 material = ExtResource("3_33pvy")
 
-[node name="Light_switch" parent="Environment_Mesh" node_paths=PackedStringArray("light_node") instance=ExtResource("6_38ep1")]
-transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -10.578944, 1.466499, 12.511489)
-light_node = NodePath("../../Lights/OmniLight3D2")
-
-[node name="Door" parent="Environment_Mesh" instance=ExtResource("5_vngmv")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -11.5, 1.2502782, 11.8)
-
-[node name="Door2" parent="Environment_Mesh" instance=ExtResource("5_vngmv")]
-transform = Transform3D(1.8515737, 0, 0, 0, 1.3982909, 0, 0, 0, 1.2, 4.703535, 1.4502783, 24.994955)
-
 [node name="Lights" type="Node" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
@@ -190,7 +190,7 @@ light_energy = 2.0
 omni_range = 36.736015
 
 [node name="Player" parent="." instance=ExtResource("7_kkibr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1262672, 0)
+transform = Transform3D(-0.99416035, 0, 0.10791267, 0, 1, 0, -0.10791267, 0, -0.99416035, 0, 3.1262672, 33.520893)
 
 [node name="Test" type="Node" parent="."]
 
@@ -269,5 +269,5 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Test/DummyTest1"]
 shape = SubResource("CapsuleShape3D_ugwsj")
 
-[node name="Enemy" parent="Enemy_Test" instance=ExtResource("12_v56u2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5650873, 1.388246, 41.432034)
+[node name="Enemy" parent="." instance=ExtResource("12_v56u2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.73331, 0.5161035, 37)
