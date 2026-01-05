@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cykrwqdrmjupw"]
+[gd_scene load_steps=31 format=3 uid="uid://cykrwqdrmjupw"]
 
 [ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_4efs8"]
 [ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_4kcdj"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://s1wgwcxpxije" path="res://Scenes/Inventory/Items/scrap.tscn" id="10_42djl"]
 [ext_resource type="PackedScene" uid="uid://8pvex1nnyd40" path="res://Scenes/Inventory/Items/MedkitPickup.tscn" id="11_m1h85"]
 [ext_resource type="PackedScene" uid="uid://b5fdwt0meq1if" path="res://Scenes/Enemies/enemy.tscn" id="12_v56u2"]
+[ext_resource type="PackedScene" uid="uid://deov1l8sad30f" path="res://Scenes/Levels/extraction_zone.tscn" id="13_vbutj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
 panorama = ExtResource("1_4efs8")
@@ -272,3 +273,6 @@ shape = SubResource("CapsuleShape3D_ugwsj")
 
 [node name="Enemy" parent="." instance=ExtResource("12_v56u2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.73331, 0.5161035, 37)
+
+[node name="ExtractionZone" parent="." instance=ExtResource("13_vbutj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.756138, 1.0749915, 54.15293)

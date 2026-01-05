@@ -37,7 +37,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var inventory_ui: Control = $CanvasLayer/InventoryUI
 @onready var weapon_holder: Node3D = $Head/Camera3D/WeaponHolder
 @onready var aim_ray: RayCast3D = $Head/Camera3D/AimRay
-
+@onready var game_over_screen = $CanvasLayer/GameOverScreen
 
 # --------------- audio node ---------------
 @export_group("Audio")
@@ -353,5 +353,5 @@ func take_damage(amount: int):
 
 func die():
 	print("YOU DIED")
-	# Restart the current level
-	get_tree().reload_current_scene()
+	# Call the UI function
+	game_over_screen.set_title("YOU DIED", Color.RED)

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://deov1l8sad30f"]
+
+[ext_resource type="Script" uid="uid://6i8dv4lk1qlw" path="res://Scripts/extraction_zone.gd" id="1_tlv07"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qsurb"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsurb"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.011764706)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 6.29
+
+[sub_resource type="BoxMesh" id="BoxMesh_tlv07"]
+material = SubResource("StandardMaterial3D_qsurb")
+size = Vector3(3, 2, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlv07"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ydii3"]
+material = SubResource("StandardMaterial3D_tlv07")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="ExtractionZone" type="Node3D"]
+script = ExtResource("1_tlv07")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_qsurb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_tlv07")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 2)
+mesh = SubResource("BoxMesh_ydii3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, -0.7, 2)
+mesh = SubResource("BoxMesh_ydii3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, -2)
+mesh = SubResource("BoxMesh_ydii3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, -0.7, -2)
+mesh = SubResource("BoxMesh_ydii3")
