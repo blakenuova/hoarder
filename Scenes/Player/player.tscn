@@ -19,7 +19,7 @@ height = 1.4984375
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpcdj"]
 height = 1.0
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_a3d8c")
 
 [node name="Inventory" type="Node" parent="."]

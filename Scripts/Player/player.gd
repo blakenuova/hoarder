@@ -55,11 +55,14 @@ var t_bob = 0.0
 @onready var flashlight_audio: AudioStreamPlayer3D = $Head/Camera3D/Flashlight/Flashlight_audio
 
 # Player Stats
-@export var health: int = 100
+@export_group("Health")
+@export var max_health: int = 100
+var current_health: int = 100
 
 #-------------------------------------------------------------------------------
 
 func _ready():
+	current_health = max_health
 	# Lock mouse for FPS
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# Initialize shapes: Ensure only standing is active at start
@@ -167,6 +170,8 @@ func _flashlight():
 		flashlight.visible = !flashlight.visible
 		flashlight_audio.play()
 
+# ----------------------- MOVEMENT FUNCTIONS -----------------------------------
+
 func handle_stance():
 	var target_state = State.STAND
 	
@@ -216,26 +221,6 @@ func get_current_speed() -> float:
 			return walk_speed
 	return walk_speed
 
-func _interaction_logic():
-	# 1. Check if Raycast is hitting anything
-	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
-		
-		# 2. Is it Interactable?
-		if collider is Interactable:
-			# SHOW PROMPT on UI
-			hud.update_prompt(collider.prompt_message)
-			
-			# Interact on key press
-			if Input.is_action_just_pressed("interact"):
-				collider.interact(self)
-		else:
-			# Hitting something, but it's not interactive (like a wall)
-			hud.clear_prompt()
-	else:
-		# Not looking at anything
-		hud.clear_prompt()
-
 func _headbob(delta):
 	if is_on_floor():
 		# Only bob if moving
@@ -269,6 +254,28 @@ func _headbob(delta):
 			# Reset camera smoothly when stopped
 			t_bob = 0.0
 			camera.transform.origin = camera.transform.origin.lerp(Vector3.ZERO, delta * 5.0)
+
+# ---------------------- Interaction & Inventory FUNCTIONS ---------------------
+
+func _interaction_logic():
+	# 1. Check if Raycast is hitting anything
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+		
+		# 2. Is it Interactable?
+		if collider is Interactable:
+			# SHOW PROMPT on UI
+			hud.update_prompt(collider.prompt_message)
+			
+			# Interact on key press
+			if Input.is_action_just_pressed("interact"):
+				collider.interact(self)
+		else:
+			# Hitting something, but it's not interactive (like a wall)
+			hud.clear_prompt()
+	else:
+		# Not looking at anything
+		hud.clear_prompt()
 
 func collect_item(item_data: ItemData):
 	inventory.add_item(item_data)
@@ -309,6 +316,8 @@ func _on_use_item(index: int):
 	if was_used:
 		inventory.remove_item_at_index(index)
 
+#------------------------------ COMBAT FUNCTIONS -----------------------------
+
 func _handle_combat():
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		# FIRE
@@ -328,3 +337,21 @@ func _on_ammo_changed(new_amount):
 	# We assume max ammo is 30 for now, or you can get it from the weapon
 	# For a quick fix, just update the current number
 	hud.update_ammo(new_amount, 30)
+
+
+
+
+# ----------------------------- HEALTH FUNCTION -----------------------------------
+func take_damage(amount: int):
+	current_health -= amount
+	print("OUCH! Player Health: " + str(current_health))
+
+	# Optional: Shake camera or flash red screen here later
+
+	if current_health <= 0:
+		die()
+
+func die():
+	print("YOU DIED")
+	# Restart the current level
+	get_tree().reload_current_scene()
