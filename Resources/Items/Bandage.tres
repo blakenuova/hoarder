@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=3 format=3 uid="uid://b7yfil8l7t4w0"]
+
+[ext_resource type="Texture2D" uid="uid://b1mu6odm5l76b" path="res://Assets/2D Assets/Resource Icons/Bandage.png" id="1_3h0cu"]
+[ext_resource type="Script" uid="uid://d0oermyymlyyp" path="res://Scripts/Inventory/consumable_item.gd" id="2_p6dhk"]
+
+[resource]
+script = ExtResource("2_p6dhk")
+health_bonus = 20
+name = "Bandage"
+description = "Simple Bandage. Useful for healing small cuts"
+stackable = true
+icon = ExtResource("1_3h0cu")
+pickup_scene_path = "uid://8pvex1nnyd40"
+metadata/_custom_type_script = "uid://d0oermyymlyyp"

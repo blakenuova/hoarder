@@ -1,9 +1,16 @@
 extends Control
 
+
+#Signals
 signal drop_item(index) # Signal to tell Player to drop something
+signal use_item(index)
+
 
 var slot_scene = preload("res://Scenes/UI/InventorySlot.tscn")
 @onready var grid = $Panel/Grid
+
+
+
 
 func update_grid(items: Array[ItemData]):
 	# Clear existing
@@ -25,3 +32,5 @@ func _on_slot_clicked(index: int, button: int):
 	if button == MOUSE_BUTTON_RIGHT:
 		# Trigger the drop
 		drop_item.emit(index)
+	elif button == MOUSE_BUTTON_LEFT:
+		use_item.emit(index)

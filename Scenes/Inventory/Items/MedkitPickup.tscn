@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://8pvex1nnyd40"]
+
+[ext_resource type="Script" uid="uid://wqyyyjffuct6" path="res://Scripts/Interactable/pickup.gd" id="1_xkwf2"]
+[ext_resource type="Resource" uid="uid://b7yfil8l7t4w0" path="res://Resources/Items/Bandage.tres" id="2_xkwf2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkwf2"]
+albedo_color = Color(0.72658604, 0.837382, 0.9017603, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nyxgd"]
+material = SubResource("StandardMaterial3D_xkwf2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmlda"]
+albedo_color = Color(0.646029, 0.646029, 0.646029, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w56sa"]
+material = SubResource("StandardMaterial3D_jmlda")
+top_radius = 0.8
+bottom_radius = 0.8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hwp3t"]
+height = 0.25976563
+radius = 0.08300781
+
+[node name="Flashlight" type="RigidBody3D"]
+script = ExtResource("1_xkwf2")
+item_data = ExtResource("2_xkwf2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.09, 0, 0, 0, 0.12747101, 0, 0, 0, 0.09, 0, 0.0027854647, 0)
+mesh = SubResource("CylinderMesh_nyxgd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.09399413, 0, 0, 0, 0.08418385, 0, 0, 0, 0.09399413, 0, 0.015808487, 0)
+mesh = SubResource("CylinderMesh_w56sa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014648438, 0)
+shape = SubResource("CylinderShape3D_hwp3t")

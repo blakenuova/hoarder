@@ -35,6 +35,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera = $Head/Camera3D
 @onready var inventory: Inventory = $Inventory
 @onready var inventory_ui: Control = $CanvasLayer/InventoryUI
+@onready var weapon_holder: Node3D = $Head/Camera3D/WeaponHolder
 
 
 # --------------- audio node ---------------
@@ -52,7 +53,8 @@ var t_bob = 0.0
 @onready var flashlight: SpotLight3D = $Head/Camera3D/Flashlight
 @onready var flashlight_audio: AudioStreamPlayer3D = $Head/Camera3D/Flashlight/Flashlight_audio
 
-
+# Player Stats
+@export var health: int = 100
 
 #-------------------------------------------------------------------------------
 
@@ -68,6 +70,7 @@ func _ready():
 	
 	# Listen for Drop Request
 	inventory_ui.drop_item.connect(_on_drop_item)
+	inventory_ui.use_item.connect(_on_use_item)
 
 func _input(event):
 	# Toggle Inventory (Always allow this so we can close it!)
@@ -105,7 +108,7 @@ func _physics_process(delta):
 	
 	_flashlight()
 	_interaction_logic()
-	
+	_handle_combat()
 	# 1. Handle Stance (Crouch/Prone)
 	handle_stance()
 
@@ -283,3 +286,24 @@ func _on_drop_item(index: int):
 
 	# 3. Remove from Inventory
 	inventory.remove_item_at_index(index)
+
+func _on_use_item(index: int):
+	# 1. Get the item
+	var item_to_use = inventory.items[index]
+	
+	# 2. Try to use it. Pass 'self' (the player) to the item.
+	var was_used = item_to_use.use(self)
+	
+	# 3. If the item says it was consumed (returns true), remove it.
+	if was_used:
+		inventory.remove_item_at_index(index)
+
+func _handle_combat():
+	# Only shoot if mouse is captured (Inventory is closed)
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if Input.is_action_pressed("fire"): # Make sure "fire" is in your Input Map (Left Click)
+			# Loop through children in WeaponHolder and call shoot()
+			# This is a simple way to shoot whatever gun is currently equipped
+			for child in weapon_holder.get_children():
+				if child.has_method("shoot"):
+					child.shoot()

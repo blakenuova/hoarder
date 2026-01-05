@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://yt416ssqoqfs"]
+[gd_scene load_steps=26 format=3 uid="uid://yt416ssqoqfs"]
 
 [ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
 [ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://couv4onmpyk7p" path="res://Scenes/Interactables/light_switch.tscn" id="6_eq3jn"]
 [ext_resource type="PackedScene" uid="uid://pa7qbuhfjv2p" path="res://Scenes/Inventory/Items/flashlight.tscn" id="9_r6koe"]
 [ext_resource type="PackedScene" uid="uid://s1wgwcxpxije" path="res://Scenes/Inventory/Items/scrap.tscn" id="10_lesm6"]
+[ext_resource type="PackedScene" uid="uid://8pvex1nnyd40" path="res://Scenes/Inventory/Items/MedkitPickup.tscn" id="11_nv2pg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_erxk3"]
 panorama = ExtResource("1_eihp4")
@@ -227,3 +228,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, -1.1359
 
 [node name="Scrap9" parent="Test" instance=ExtResource("10_lesm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, -2.039886)
+
+[node name="Flashlight" parent="." instance=ExtResource("11_nv2pg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.564266, 1.5622956, 0)
