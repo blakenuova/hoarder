@@ -33,7 +33,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="WeaponHolder" type="Node3D" parent="Head/Camera3D"]
 
 [node name="Blaster" parent="Head/Camera3D/WeaponHolder" instance=ExtResource("3_jlvik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53896165, -0.3733548, -0.6760826)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.4, -0.7)
+damage = 10
+max_ammo = 30
+fire_rate = 0.5
 
 [node name="InteractRay" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -1.2)
@@ -49,6 +52,9 @@ spot_angle = 38.0
 [node name="Flashlight_audio" type="AudioStreamPlayer3D" parent="Head/Camera3D/Flashlight"]
 stream = ExtResource("3_htcer")
 volume_db = -45.549
+
+[node name="AimRay" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -100)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_tugb3")

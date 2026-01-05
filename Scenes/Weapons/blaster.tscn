@@ -7,10 +7,7 @@ size = Vector3(0.1, 0.1, 0.5)
 
 [node name="Blaster" type="Node3D"]
 script = ExtResource("1_s2cw2")
+fire_rate = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_fsavt")
-
-[node name="RayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
-target_position = Vector3(0, 0, -100)

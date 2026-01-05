@@ -36,6 +36,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var inventory: Inventory = $Inventory
 @onready var inventory_ui: Control = $CanvasLayer/InventoryUI
 @onready var weapon_holder: Node3D = $Head/Camera3D/WeaponHolder
+@onready var aim_ray: RayCast3D = $Head/Camera3D/AimRay
 
 
 # --------------- audio node ---------------
@@ -71,6 +72,16 @@ func _ready():
 	# Listen for Drop Request
 	inventory_ui.drop_item.connect(_on_drop_item)
 	inventory_ui.use_item.connect(_on_use_item)
+	
+	# --- WEAPON CONNECTIONS ---
+	for child in weapon_holder.get_children():
+		if child is Weapon:
+			# 1. Give the weapon the Camera's Raycast
+			child.ray_cast = aim_ray 
+			
+			# 2. Connect signals
+			child.ammo_changed.connect(_on_ammo_changed)
+			hud.update_ammo(child.current_ammo, child.max_ammo)
 
 func _input(event):
 	# Toggle Inventory (Always allow this so we can close it!)
@@ -311,3 +322,9 @@ func _handle_combat():
 			for child in weapon_holder.get_children():
 				if child.has_method("reload"):
 					child.reload()
+					
+
+func _on_ammo_changed(new_amount):
+	# We assume max ammo is 30 for now, or you can get it from the weapon
+	# For a quick fix, just update the current number
+	hud.update_ammo(new_amount, 30)

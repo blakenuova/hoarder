@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://yt416ssqoqfs"]
+[gd_scene load_steps=28 format=3 uid="uid://yt416ssqoqfs"]
 
 [ext_resource type="Texture2D" uid="uid://crenflbt7bjbw" path="res://Assets/HDRIS/MY HDRI NEW v2.jpg" id="1_eihp4"]
 [ext_resource type="Texture2D" uid="uid://ywie1b1bnk8y" path="res://Assets/Prototyping-Testing/Grids/Dark/texture_08.png" id="2_erxk3"]
@@ -68,6 +68,10 @@ size = Vector3(17, 5, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_eq3jn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r6koe"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nv2pg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ugwsj"]
 
 [node name="Safe_zone" type="Node3D"]
 
@@ -231,3 +235,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13123, 0.7565228, -2.0398
 
 [node name="Flashlight" parent="." instance=ExtResource("11_nv2pg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.564266, 1.5622956, 0)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="DummyTest1" type="StaticBody3D" parent="Node" groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Node/DummyTest1"]
+mesh = SubResource("CapsuleMesh_nv2pg")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/DummyTest1"]
+shape = SubResource("CapsuleShape3D_ugwsj")

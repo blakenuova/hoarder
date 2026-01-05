@@ -2,6 +2,7 @@ extends Control
 
 @onready var prompt_label = $Label
 @onready var crosshair: ColorRect = $Crosshair
+@onready var ammo_label: Label = $AmmoLabel
 
 
 func update_prompt(text_message):
@@ -13,3 +14,7 @@ func clear_prompt():
 
 func set_crosshair_color(color: Color):
 	crosshair.color = color
+
+func update_ammo(current, max_ammo):
+	# Format the text like "25 / 30"
+	ammo_label.text = str(current) + " / " + str(max_ammo)
