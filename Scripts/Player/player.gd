@@ -299,11 +299,15 @@ func _on_use_item(index: int):
 		inventory.remove_item_at_index(index)
 
 func _handle_combat():
-	# Only shoot if mouse is captured (Inventory is closed)
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		if Input.is_action_pressed("fire"): # Make sure "fire" is in your Input Map (Left Click)
-			# Loop through children in WeaponHolder and call shoot()
-			# This is a simple way to shoot whatever gun is currently equipped
+		# FIRE
+		if Input.is_action_pressed("fire"):
 			for child in weapon_holder.get_children():
 				if child.has_method("shoot"):
 					child.shoot()
+		
+		# RELOAD
+		if Input.is_action_just_pressed("reload"): # Make sure "reload" is in Input Map (key R)
+			for child in weapon_holder.get_children():
+				if child.has_method("reload"):
+					child.reload()
