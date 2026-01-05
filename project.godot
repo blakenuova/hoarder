@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Hoarder"
-run/main_scene="uid://yt416ssqoqfs"
+run/main_scene="uid://cykrwqdrmjupw"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
 [global_group]
 
 Enemy=""
+Player=""
 
 [input]
 

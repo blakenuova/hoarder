@@ -34,8 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Blaster" parent="Head/Camera3D/WeaponHolder" instance=ExtResource("3_jlvik")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.4, -0.7)
-damage = 10
-max_ammo = 30
 fire_rate = 0.5
 
 [node name="InteractRay" type="RayCast3D" parent="Head/Camera3D"]
@@ -53,7 +51,7 @@ spot_angle = 38.0
 stream = ExtResource("3_htcer")
 volume_db = -45.549
 
-[node name="AimRay" type="RayCast3D" parent="Head/Camera3D"]
+[node name="AimRay" type="RayCast3D" parent="Head/Camera3D" groups=["Player"]]
 target_position = Vector3(0, 0, -100)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
