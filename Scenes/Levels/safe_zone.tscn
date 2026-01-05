@@ -62,7 +62,7 @@ roughness = 0.6
 
 [sub_resource type="BoxMesh" id="BoxMesh_wsbbe"]
 material = SubResource("StandardMaterial3D_2cs7a")
-size = Vector3(42, 8, 0.1)
+size = Vector3(17, 5, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_eq3jn"]
 
@@ -120,12 +120,12 @@ use_collision = true
 mesh = SubResource("BoxMesh_olhn8")
 
 [node name="subtraction" type="CSGBox3D" parent="Environment_Mesh/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027862549, 5.188362, -25.039534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020965576, 4.0889482, -25.039534)
 operation = 2
-size = Vector3(42.041687, 8, 1)
+size = Vector3(17, 4.998828, 1)
 
 [node name="Glass" type="CSGMesh3D" parent="Environment_Mesh/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0999994, -25)
 use_collision = true
 mesh = SubResource("BoxMesh_wsbbe")
 
